@@ -1,5 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import styles from '../assets/styles/estilos_navegador.module.css'
+import { Icono_Instagram, Icono_Tiktok, Icono_Facebook, Icono_Whatsapp } from '../assets/images/iconos/svg/Redes_Sociales';
 import imageHelper from '../utils/imageHelper'
 
 const Navegador = () => {
@@ -25,13 +26,13 @@ const Navegador = () => {
                     </div>
                     <div className={styles.cont_redes_sociales}>
                         <div>
-                            <img src={imageHelper.icono_instagram} alt="" />
+                            <Icono_Instagram/>
                         </div>
                         <div>
-                            <img src={imageHelper.icono_facebook} alt="" />
+                            <Icono_Facebook/>
                         </div>
                         <div>
-                            <img src={imageHelper.icono_whatsapp} alt="" />
+                            <Icono_Whatsapp/>
                         </div>
                     </div>
                 </header>

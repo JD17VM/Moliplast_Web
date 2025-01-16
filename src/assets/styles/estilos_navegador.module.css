@@ -6,6 +6,7 @@
     width: 100%; 
     z-index: 1000; 
     --padding_horizontal_header_nav:2rem;
+    color: var(--color_blanco);
 }
 
     .cont_navegador > header{
@@ -35,7 +36,6 @@
                 display: grid;
                 grid-template-rows: auto auto;
                 grid-template-columns: auto auto;
-                color: var(--color_blanco);
                 column-gap: 15px;
                 row-gap: 5px;
             }
@@ -71,6 +71,10 @@
 
                 .cont_navegador > header > .cont_redes_sociales > div > img{
                     width: 100%;
+                }
+
+                .cont_navegador > header > .cont_redes_sociales > div > svg{
+                    width: 90%;
                 }
 
     nav{ 
