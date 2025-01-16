@@ -1,0 +1,90 @@
+footer{
+    background-color: #0F0F0F;
+    height: auto;
+    display: grid;
+    grid-template-areas: 
+    "logo_blanco secciones_importantes canales_comunicacion"
+    "direccion_horarios secciones_importantes canales_comunicacion"
+    ;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    padding: 2rem 3rem;
+    column-gap: 4rem;
+    row-gap: 1rem;
+}
+
+
+footer > .cont_logo_blanco{
+    /*background-color: green;*/
+    grid-area: logo_blanco;
+}
+
+    footer > .cont_logo_blanco > img{
+        height: 50px;
+    }
+
+
+footer > .cont_direccion_horarios{
+    /*background-color: yellow;*/
+    grid-area: direccion_horarios;
+}
+
+
+footer > .cont_secciones_importantes{
+    /*background-color: red;*/
+    grid-area: secciones_importantes;
+}
+
+footer > .cont_canales_comunicacion{
+    /*background-color: blue;*/
+    grid-area: canales_comunicacion;
+    justify-self: end;
+}
+
+footer > div:not(:first-child){
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    
+}
+
+
+
+/*----------------------------------------------*/
+
+.cont_listados{
+    /*background-color: greenyellow;*/
+    color: rgb(107, 107, 107);
+}
+
+
+    .cont_listados > div{
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+        height: 1.5em;
+        
+        
+    }
+
+        .cont_listados > div > img{
+            height: 100%;
+        }
+
+        .cont_listados > div > svg{
+            height: 100%;
+        }
+
+    .cont_listados > ul{
+        margin-top: 0.7rem;
+        list-style-type: disc;
+        list-style-position: inside;
+        margin-left: 2rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.7rem;
+    }
+
+        .cont_listados > ul > li{
+            line-height: 1.3;
+        }
