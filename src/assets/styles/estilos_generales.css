@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root{   
+    --fuente_regular:400;
+    --fuente_semibold:700;
+    --fuente_bold:900;
+
+    --fuente_tamanio_titulo_1:32px;
+    --fuente_tamanio_titulo_2:28px;
+    --fuente_tamanio_titulo_3:22px;
+    --fuente_tamanio_titulo_4:18px;
+    --fuente_tamanio_titulo_5:15px;
+
+    --color_azul_1:#010332;
+    --color_azul_0:#010440;
+    --color_azul_-1:#030AA1;
+    --color_azul_-2:#3C45FC;
+
+    --color_amarillo_1:#454002;
+    --color_amarillo_0:#595203;
+    --color_amarillo_-1:#B3A506;
+    --color_amarillo_-2:#F7E61E;
+
+    --color_negro:#1A1A1E;
+    --color_gris_1:#60606F;
+    --color_gris_0:#AEAEB9;
+    --color_gris_-1:#E4E4E8;
+    --color_blanco:#F3F3F5;
+
+
+    --height_header:100px;
+    --height_nav:50px;
+}
+
+    
+html{
+    font-family: 'Lato', sans-serif;
+    font-size: var(--fuente_tamanio_titulo_5);
+}
+
+*{
+    box-sizing: border-box;
+}
