@@ -111,6 +111,15 @@ input::placeholder {
   color: #999; /* Color del placeholder */
 }
 
+
+a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Inherit para usar el color del texto del contenedor */
+  background-color: transparent; /* Fondo transparente */
+  cursor: pointer; /* Asegura que el cursor se mantenga como pointer */
+  /* Puedes agregar más estilos personalizados aquí */
+}
+
 *{
   box-sizing: border-box;
 }
