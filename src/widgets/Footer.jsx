@@ -65,9 +65,7 @@ const Footer = () => {
                 ]}/>
             </div>
 
-            <div className={styles.cont_secciones_importantes} style={{
-                alignItems: "center"
-            }}>
+            <div className={styles.cont_secciones_importantes}>
                 <Titulo_Lista 
                 Icono = {Icono_Instagram}
                 titulo = "Secciones Importantes"

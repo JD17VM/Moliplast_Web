@@ -22,6 +22,10 @@ footer > .cont_logo_blanco{
 
     footer > .cont_logo_blanco > img{
         height: 50px;
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+    }footer > .cont_logo_blanco > img:hover{
+        opacity: 1;
     }
 
 
@@ -34,6 +38,7 @@ footer > .cont_direccion_horarios{
 footer > .cont_secciones_importantes{
     /*background-color: red;*/
     grid-area: secciones_importantes;
+    align-items: center;
 }
 
 footer > .cont_canales_comunicacion{
@@ -87,6 +92,7 @@ footer > div:not(:first-child){
         .cont_listados > ul > li{
             line-height: 1.3;
             position: relative;
+           
         }
 
         .cont_listados > ul > li::marker {
@@ -108,3 +114,52 @@ footer > div:not(:first-child){
     .hovered{
         color:var(--color_blanco);
     }
+
+
+@media only screen and (max-width: 1200px){
+    footer{
+        column-gap: 2rem;
+    }
+    
+}
+
+
+@media only screen and (max-width: 900px){
+    footer{
+        column-gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 
+        "canales_comunicacion secciones_importantes"
+        "direccion_horarios direccion_horarios"
+        "logo_blanco logo_blanco"
+        ;
+        row-gap: 2.5rem;
+        padding: 2rem 1rem;
+    }
+
+    footer > .cont_canales_comunicacion{
+        justify-self: start;
+    }
+
+        footer > .cont_canales_comunicacion li{
+            white-space: nowrap;
+        }
+
+    footer > .cont_secciones_importantes{
+        align-items: end;
+    }
+
+    footer > .cont_logo_blanco{
+        justify-self: center;
+    }
+
+    .cont_listados > ul{
+        margin-left: 0.1rem;
+    }
+
+        .cont_listados > ul > li{
+            text-overflow: ellipsis;
+        }
+    
+}
