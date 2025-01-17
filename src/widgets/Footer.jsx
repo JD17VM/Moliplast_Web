@@ -1,12 +1,16 @@
+import React, { useState } from 'react';
+
 import styles from '../assets/styles/estilos_footer.module.css'
 import imageHelper from '../utils/imageHelper'
 
 import { Icono_Instagram, Icono_Tiktok, Icono_Facebook, Icono_Whatsapp } from '../assets/images/iconos/svg/Redes_Sociales';
 
 const Titulo_Lista = ({ Icono, titulo, elementos_lista = false }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    
     return (
         <div className={styles.cont_listados}>
-            <div>
+            <div className={isHovered ? styles.hovered : ''}>
                 <Icono/>
                 <h3>{titulo}</h3>
             </div>
@@ -14,7 +18,9 @@ const Titulo_Lista = ({ Icono, titulo, elementos_lista = false }) => {
             {elementos_lista ? 
             (<ul>
                 {elementos_lista.map((item, index) => (
-                    <li key={index}>
+                    <li key={index} 
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}>
                         <a href={item.enlace}>{item.elemento}</a>
                     </li> 
                 ))}
@@ -22,6 +28,16 @@ const Titulo_Lista = ({ Icono, titulo, elementos_lista = false }) => {
             }
             
         </div>
+    );
+}
+
+
+const Titulo_Icono = ({ Icono, titulo, enlace }) => {
+    return (
+        <a href={enlace} className={styles.cont_titulo_icono}>
+            <Icono/>
+            <h3>{titulo}</h3>
+        </a>
     );
 }
 
@@ -75,17 +91,20 @@ const Footer = () => {
                     {elemento: "jose.ramos@moliplast.com", enlace: "#"},
                 ]}/>
 
-                <Titulo_Lista 
+                <Titulo_Icono 
                 Icono = {Icono_Whatsapp}
                 titulo = "Correo"
+                enlace = "#"
                 />
-                <Titulo_Lista 
+                <Titulo_Icono 
                 Icono = {Icono_Instagram}
                 titulo = "Correo"
+                enlace = "#"
                 />
-                <Titulo_Lista 
+                <Titulo_Icono  
                 Icono = {Icono_Instagram}
                 titulo = "Correo"
+                enlace = "#"
                 />
             </div>
 
