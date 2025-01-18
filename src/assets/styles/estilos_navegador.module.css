@@ -143,6 +143,87 @@
                 font-size: 20px;
             }
 
+    .cont_boton_hamburguesa{
+        display: none;
+    }
+
 .espacio_nav{
     height: calc(var(--height_header) + var(--height_nav));
+}
+
+
+@media only screen and (max-width: 1000px){
+
+
+    .cont_navegador > header{
+        padding: 1rem 0.5rem;
+    }
+
+        .cont_navegador > header > .cont_redes_sociales{
+            display: none;
+        }
+
+    nav > ul{
+        background-color: red;
+        flex-direction: column;
+        z-index: 1000;
+        height: auto;
+        position: absolute;
+        top:0;
+        margin-top: var(--height_header);
+        right:0;
+        width: 100%;
+    }
+
+        nav > ul > li{
+            /*background-color: yellow;*/
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        nav > ul > li > a{
+            padding: 8px 0.4rem;
+        }
+
+            nav > ul > li > ul{
+                position: static;
+                flex-direction: column;
+            }
+
+
+    .cont_navegador > header > .cont_contacto{
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 12px;
+        row-gap: 4px;
+    }
+
+    .cont_navegador > header > .cont_contacto > div{
+        grid-template-rows: 1fr;
+        row-gap: 0;
+        column-gap: 0.5rem;
+    }
+        .cont_navegador > header > .cont_contacto > div > p:nth-of-type(1){
+            display: none;
+        }
+
+        .cont_navegador > header > .cont_contacto > div > span{
+            font-size: 1.7em;
+        }
+
+    .cont_navegador > header > .cont_logo{
+        height: 80%;
+    }
+
+    .cont_boton_hamburguesa{
+        display: block;
+        padding: 0.3rem;
+        border: 2px solid white;
+    }
+
+        .cont_boton_hamburguesa > span{
+            position: relative;
+            top:2px;
+        }
 }

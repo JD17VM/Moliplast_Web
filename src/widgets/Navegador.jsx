@@ -1,5 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import styles from '../assets/styles/estilos_navegador.module.css'
+//import styles from '../assets/styles/estilos_navegador.module.css'
+import styles from '../assets/styles/estilos_navegador.module.scss'
 import { Icono_Instagram, Icono_Tiktok, Icono_Facebook, Icono_Whatsapp } from '../assets/images/iconos/svg/Redes_Sociales';
 import imageHelper from '../utils/imageHelper'
 
@@ -35,26 +36,31 @@ const Navegador = () => {
                             <Icono_Whatsapp/>
                         </div>
                     </div>
+                    <div className={styles.cont_boton_hamburguesa}>
+                        <span className="material-symbols-outlined">
+                            menu
+                        </span>
+                    </div>
                 </header>
                 <nav>
-                    <ul>
+                    <ul className={styles.cont_lista_enlaces}>
                         <li>
                             <a>Nosotros</a> 
                             <ul>
-                                <li>Nosotros 1</li>
-                                <li>Nosotros 2</li>
-                                <li>Nosotros 3</li>
-                                <li>Nosotros 4</li>
+                                <li><a>Nosotros 1</a></li>
+                                <li><a>Nosotros 2</a></li>
+                                <li><a>Nosotros 3</a></li>
+                                <li><a>Nosotros 4</a></li>
                             </ul>
                         </li>
                         <li><a>Productos</a></li>
                         <li>
                             <a>Servicios</a>
                             <ul>
-                                <li>Estos son los servicios 1</li>
-                                <li>Estos son los servicios 2</li>
-                                <li>Estos son los servicios 3</li>
-                                <li>Estos son los servicios 4</li>
+                                <li><a>Estos son los servicios 1</a></li>
+                                <li><a>Estos son los servicios 2</a></li>
+                                <li><a>Estos son los servicios 3</a></li>
+                                <li><a>Estos son los servicios 4</a></li>
                             </ul>
                         </li>
                         <li><a>Catálogos</a></li>
