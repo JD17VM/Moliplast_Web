@@ -98,20 +98,29 @@
         >ul.cont_lista_enlaces{
             /*background-color: yellow;*/
             height: 100%;
-
+            
             display: flex;
             align-items: center;
             column-gap: 70px;
 
+            &.mostrar{
+                display: flex;
+            }
+
+            &.ocultar{
+                display: none; 
+            }
+
+
             >li{
-                background-color: yellow;
+                //background-color: yellow;
                 position: relative;
                 display: flex;
 
                 $padding_vertical: 8px;
 
                 >a{
-                    background-color: green;
+                    //background-color: green;
                     width: 100%;
                     padding: $padding_vertical 1rem;
                 }
@@ -127,11 +136,19 @@
                     top:calc(((1em + var(--height_nav)) / 2) + $padding_vertical);
                     left: 0;
 
+                    &.mostrar{
+                        display: block !important;
+                    }
+
+                    &.ocultar{
+                        display: none; 
+                    }
+
                     >li{
                         display: flex;
                         
                         >a{
-                            background-color: red;
+                            //background-color: red;
                             width: 100%;
                             padding: $padding_vertical 1rem;
                         }
@@ -178,9 +195,8 @@
 @media only screen and (max-width: 1000px){
 
 .cont_navegador {
-
+    --padding_horizontal_header_nav: 0.5rem;
     >header{
-        padding: 1rem 0.5rem;
 
         >.cont_logo{
             height: 80%;
@@ -228,8 +244,9 @@
     }
 
     nav{ 
+        justify-content: end;
         >ul.cont_lista_enlaces{
-            background-color: red;
+            background-color: inherit;
             height: auto;
             width: 100%;
             
@@ -238,7 +255,7 @@
             position: absolute;
             top:var(--height_header);
             right:0;
-
+            display: none ;
 
             >li{
                 /*background-color: yellow;*/
@@ -252,8 +269,13 @@
                     display: flex;
                     justify-content: space-between;
                     padding-right: 0.7rem;
-                    &::after{
+
+                    &.flecha_despliegue_cerrado::after{
                         content: "▼";
+                    }
+
+                    &.flecha_despliegue_abierto::after{
+                        content: "▲";
                     }
                 }
 

@@ -1,10 +1,47 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-//import styles from '../assets/styles/estilos_navegador.module.css'
 import styles from '../assets/styles/estilos_navegador.module.scss'
 import { Icono_Instagram, Icono_Tiktok, Icono_Facebook, Icono_Whatsapp } from '../assets/images/iconos/svg/Redes_Sociales';
 import imageHelper from '../utils/imageHelper'
 
+import React, { useState } from 'react';
+
+const info = {
+    data: [
+        { 
+        nombre: "Nosotros", 
+        subsecciones: [
+            { nombre: "Nosotros 1", enlace: "/nosotros-1" },
+            { nombre: "Nosotros 2", enlace: "/nosotros-2" },
+            { nombre: "Nosotros 3", enlace: "/nosotros-2" },
+            { nombre: "Nosotros 4", enlace: "/nosotros-2" },
+        ]
+        },
+        { 
+        nombre: "Productos", 
+        enlace: "/productos" 
+        },
+        { 
+        nombre: "Servicios", 
+        subsecciones: [
+            { nombre: "Servicio 1", enlace: "/servicio-1" },
+            { nombre: "Servicio 2", enlace: "/servicio-2" },
+        ]
+    },
+    ]
+}
+
+const respuesta = info.data
+
+
 const Navegador = () => {
+
+    const [subseccion_abierta, setSubseccionAbierta] = useState(null);
+    const toggleSubseccion = (index) => {
+        setSubseccionAbierta(prevIndex => (prevIndex === index ? null : index));
+    };
+
+    const [navegador_activo, setNavegadorActivo] = useState(true)
+
     return (
         <>
             <div className={styles.cont_navegador}>
@@ -36,35 +73,38 @@ const Navegador = () => {
                             <Icono_Whatsapp/>
                         </div>
                     </div>
-                    <div className={styles.cont_boton_hamburguesa}>
+                    <button onClick={() => setNavegadorActivo(!navegador_activo)} className={styles.cont_boton_hamburguesa}>
                         <span className="material-symbols-outlined">
                             menu
                         </span>
-                    </div>
+                    </button>
                 </header>
                 <nav>
-                    <ul className={styles.cont_lista_enlaces}>
-                        <li>
-                            <a>Nosotros</a> 
-                            <ul>
-                                <li><a>Nosotros 1</a></li>
-                                <li><a>Nosotros 2</a></li>
-                                <li><a>Nosotros 3</a></li>
-                                <li><a>Nosotros 4</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Productos</a></li>
-                        <li>
-                            <a>Servicios</a>
-                            <ul>
-                                <li><a>Estos son los servicios 1</a></li>
-                                <li><a>Estos son los servicios 2</a></li>
-                                <li><a>Estos son los servicios 3</a></li>
-                                <li><a>Estos son los servicios 4</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Catálogos</a></li>
-                        <li><a>Contacto</a></li>
+                    <ul className={`${styles.cont_lista_enlaces}`} style={{
+                        display: `${navegador_activo ? 'flex' : 'none'}`,
+                    }}>
+                        {respuesta.map((seccion, index) => (
+                            <li key={index}>
+                                {seccion.enlace ? (
+                                    <a>{seccion.nombre}</a>
+                                ) : (
+                                    <>
+                                    <a 
+                                        className={subseccion_abierta === index ? styles.flecha_despliegue_abierto : styles.flecha_despliegue_cerrado} 
+                                        onClick={() => toggleSubseccion(index)}>{seccion.nombre}
+                                    </a>
+                                    <ul 
+                                        className={`${subseccion_abierta === index ? styles.mostrar : styles.ocultar}`}
+                                    >
+                                        {seccion.subsecciones.map((subseccion,subIndex) => (
+                                            <li key={subIndex}><a>{subseccion.nombre}</a></li>
+                                        ))}
+                                    </ul>
+                                    </>
+                                )}
+                                
+                            </li>
+                        ))}
                     </ul>
 
                     <div className={styles.cont_input}>
