@@ -1,0 +1,268 @@
+.cont_navegador{
+    background-color: var(--color_azul_1);
+    color: var(--color_blanco);
+    --padding_horizontal_header_nav:2rem;
+
+    z-index: 1000; 
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+
+    >header{
+        padding: 1rem var(--padding_horizontal_header_nav);
+        height: var(--height_header);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        >.cont_logo{
+            height: 100%;
+
+            >img{
+                height: 100%;
+            }
+        }
+
+        >.cont_contacto{
+            /*background-color: green;*/
+            display: flex;
+            column-gap: 40px;
+
+            >div{
+                /*background-color: rgb(43, 43, 21);*/
+                display: grid;
+                grid-template-rows: auto auto;
+                grid-template-columns: auto auto;
+                column-gap: 15px;
+                row-gap: 5px;
+
+                >span{
+                    grid-row: span 2;
+                    font-size: 40px;
+                    justify-self: center;
+                    align-self: center;
+                }
+
+                >p{
+                    justify-self: start;
+                    align-self: center;
+
+                    &:nth-of-type(1){
+                        font-weight: var(--fuente_semibold);
+                    }
+                }
+            }
+        }
+
+        >.cont_redes_sociales{
+            /*background-color: yellow;*/
+            display: flex;
+            column-gap: 30px;
+
+            >div{
+                /*background-color: red;*/
+                width:40px;
+                aspect-ratio: 1/1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                >img{
+                    width: 100%;
+                }
+
+                >svg{
+                    width: 90%;
+                }
+            }
+        }
+
+        .cont_boton_hamburguesa{
+            display: none;
+        }
+    }
+
+    >nav{ 
+        background-color: var(--color_negro);
+        height: var(--height_nav);
+        color:var(--color_blanco);
+        font-weight: var(--fuente_semibold);
+        padding: 0 var(--padding_horizontal_header_nav);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        >ul.cont_lista_enlaces{
+            /*background-color: yellow;*/
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            column-gap: 70px;
+
+            >li{
+                background-color: yellow;
+                position: relative;
+                display: flex;
+
+                $padding_vertical: 8px;
+
+                >a{
+                    background-color: green;
+                    width: 100%;
+                    padding: $padding_vertical 1rem;
+                }
+
+                >ul{
+                    background-color: var(--color_negro);
+                    z-index: 1000;
+
+                    display: block;
+                    flex-direction: column;
+                    white-space: nowrap;
+                    position: absolute;
+                    top:calc(((1em + var(--height_nav)) / 2) + $padding_vertical);
+                    left: 0;
+
+                    >li{
+                        display: flex;
+                        
+                        >a{
+                            background-color: red;
+                            width: 100%;
+                            padding: $padding_vertical 1rem;
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+        >.cont_input{
+            /*background-color: red;*/
+            height: 30px;
+            display: flex;
+
+            >input{
+                color:var(--color_negro);
+                font-weight: var(--fuente_regular);
+                border-radius: 1rem 0 0 1rem;
+                padding: 0 1rem;
+                height: 100%;
+                width: 16rem;
+            }
+
+            >button{
+                background-color: var(--color_azul_-2);
+                border-radius: 0 1rem 1rem 0;
+                font-size: 20px;
+                width: 40px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.espacio_nav{
+    height: calc(var(--height_header) + var(--height_nav));
+}
+
+
+@media only screen and (max-width: 1000px){
+
+.cont_navegador {
+
+    >header{
+        padding: 1rem 0.5rem;
+
+        >.cont_logo{
+            height: 80%;
+        }
+
+        >.cont_contacto{
+            font-size: 12px;
+
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: 4px;
+
+            >div{
+                grid-template-rows: 1fr;
+                row-gap: 0;
+                column-gap: 0.5rem;
+
+                >p{
+                    &:nth-of-type(1){
+                        display: none;
+                    }
+                }
+
+                >span{
+                    font-size: 1.7em;
+                }
+            }
+        }
+
+        >.cont_redes_sociales{
+            display: none;
+        }
+
+        >.cont_boton_hamburguesa{
+            border: 2px solid white;
+            padding: 0.3rem;
+
+            display: block;
+
+            >span{
+                position: relative;
+                top:2px;
+            }
+        }
+    }
+
+    nav{ 
+        >ul.cont_lista_enlaces{
+            background-color: red;
+            height: auto;
+            width: 100%;
+            
+            flex-direction: column;
+            z-index: 1000;
+            position: absolute;
+            top:var(--height_header);
+            right:0;
+
+
+            >li{
+                /*background-color: yellow;*/
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                >a{
+                    padding: 8px 0.4rem;
+
+                    display: flex;
+                    justify-content: space-between;
+                    padding-right: 0.7rem;
+                    &::after{
+                        content: "▼";
+                    }
+                }
+
+                >ul{
+                    position: static;
+                }
+            } 
+        }
+    }
+}
+
+}
