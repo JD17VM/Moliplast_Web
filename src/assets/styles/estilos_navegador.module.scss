@@ -95,7 +95,8 @@
         align-items: center;
         justify-content: space-between;
 
-        >ul.cont_lista_enlaces{
+        
+        >ul.cont_lista_enlaces, >ul.cont_lista_enlaces_movil{
             /*background-color: yellow;*/
             height: 100%;
             
@@ -116,25 +117,36 @@
                 //background-color: yellow;
                 position: relative;
                 display: flex;
+                height: 100%;
+                align-items: center;
 
                 $padding_vertical: 8px;
 
                 >a{
                     //background-color: green;
+                    //height: 100%;
                     width: 100%;
                     padding: $padding_vertical 1rem;
+                    display: flex;
+                    
+
+                    &:hover{
+                        background-color: var(--color_amarillo_-2);
+                        color:black;
+                    }
                 }
 
                 >ul{
                     background-color: var(--color_negro);
                     z-index: 1000;
-
+                    padding-top: 0.3em;
                     display: block;
                     flex-direction: column;
                     white-space: nowrap;
                     position: absolute;
                     top:calc(((1em + var(--height_nav)) / 2) + $padding_vertical);
                     left: 0;
+                    width: 100%;
 
                     &.mostrar{
                         display: block !important;
@@ -146,17 +158,29 @@
 
                     >li{
                         display: flex;
+                        justify-content: center;
                         
                         >a{
                             //background-color: red;
                             width: 100%;
+                            display: flex;
+                            justify-content: center;
                             padding: $padding_vertical 1rem;
+
+                            &:hover{
+                                background-color: var(--color_amarillo_-2);
+                                color:black;
+                            }
                         }
                     }
 
 
                 }
             }
+        }
+
+        >ul.cont_lista_enlaces_movil{
+            display: none;
         }
 
         >.cont_input{
@@ -245,7 +269,11 @@
 
     nav{ 
         justify-content: end;
+        
         >ul.cont_lista_enlaces{
+            display: none;
+        }
+        >ul.cont_lista_enlaces_movil{
             background-color: inherit;
             height: auto;
             width: 100%;
@@ -257,11 +285,21 @@
             right:0;
             display: none ;
 
+            &.mostrar{
+                display: block;
+            }
+
+            &.ocultar{
+                display: none; 
+            }
+
+
             >li{
                 /*background-color: yellow;*/
                 display: flex;
                 flex-direction: column;
                 width: 100%;
+                
 
                 >a{
                     padding: 8px 0.4rem;
@@ -281,7 +319,16 @@
 
                 >ul{
                     position: static;
-                }
+                    padding-top: 0;
+
+                    >li{
+                        justify-content: start;
+
+                        >a{
+                            justify-content: start;
+                        }
+                    }
+                }   
             } 
         }
     }

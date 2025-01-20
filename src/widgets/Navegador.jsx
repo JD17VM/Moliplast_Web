@@ -3,7 +3,7 @@ import styles from '../assets/styles/estilos_navegador.module.scss'
 import { Icono_Instagram, Icono_Tiktok, Icono_Facebook, Icono_Whatsapp } from '../assets/images/iconos/svg/Redes_Sociales';
 import imageHelper from '../utils/imageHelper'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const info = {
     data: [
@@ -40,7 +40,8 @@ const Navegador = () => {
         setSubseccionAbierta(prevIndex => (prevIndex === index ? null : index));
     };
 
-    const [navegador_activo, setNavegadorActivo] = useState(true)
+    const [navegador_movil_activo, setNavegadorMovilActivo] = useState(false);
+
 
     return (
         <>
@@ -73,16 +74,14 @@ const Navegador = () => {
                             <Icono_Whatsapp/>
                         </div>
                     </div>
-                    <button onClick={() => setNavegadorActivo(!navegador_activo)} className={styles.cont_boton_hamburguesa}>
+                    <button onClick={() => setNavegadorMovilActivo(!navegador_movil_activo)} className={styles.cont_boton_hamburguesa}>
                         <span className="material-symbols-outlined">
                             menu
                         </span>
                     </button>
                 </header>
                 <nav>
-                    <ul className={`${styles.cont_lista_enlaces}`} style={{
-                        display: `${navegador_activo ? 'flex' : 'none'}`,
-                    }}>
+                    <ul className={`${styles.cont_lista_enlaces}`}>
                         {respuesta.map((seccion, index) => (
                             <li key={index}>
                                 {seccion.enlace ? (
@@ -91,7 +90,39 @@ const Navegador = () => {
                                     <>
                                     <a 
                                         className={subseccion_abierta === index ? styles.flecha_despliegue_abierto : styles.flecha_despliegue_cerrado} 
-                                        onClick={() => toggleSubseccion(index)}>{seccion.nombre}
+                                        onMouseEnter={() => toggleSubseccion(index)}
+                                        onMouseLeave={() => toggleSubseccion(index)}
+                                    >
+                                        {seccion.nombre} 
+                                    </a>
+                                    <ul 
+                                        className={`${subseccion_abierta === index ? styles.mostrar : styles.ocultar}`}
+                                        onMouseEnter={() => toggleSubseccion(index)}
+                                        onMouseLeave={() => toggleSubseccion(index)}
+                                    >
+                                        {seccion.subsecciones.map((subseccion,subIndex) => (
+                                            <li key={subIndex}><a>{subseccion.nombre}</a></li>
+                                        ))}
+                                    </ul>
+                                    </>
+                                )}
+                                
+                            </li>
+                        ))}
+                    </ul>
+
+                    <ul className={`${styles.cont_lista_enlaces_movil} ${navegador_movil_activo ? styles.mostrar : styles.ocultar}`}>
+                    {respuesta.map((seccion, index) => (
+                            <li key={index}>
+                                {seccion.enlace ? (
+                                    <a>{seccion.nombre}</a>
+                                ) : (
+                                    <>
+                                    <a 
+                                        className={subseccion_abierta === index ? styles.flecha_despliegue_abierto : styles.flecha_despliegue_cerrado} 
+                                        onClick={() => toggleSubseccion(index)}
+                                    >
+                                        {seccion.nombre} 
                                     </a>
                                     <ul 
                                         className={`${subseccion_abierta === index ? styles.mostrar : styles.ocultar}`}
