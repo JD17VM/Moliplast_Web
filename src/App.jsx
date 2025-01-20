@@ -1,14 +1,13 @@
 import Navegador from './widgets/Navegador'
 import Footer from './widgets/Footer'
+import Inicio from './Inicio'
 
 function App() {
 
   return (
     <>
       <Navegador></Navegador>
-      <div style={{
-        height: "200px"
-      }}></div>
+      <Inicio></Inicio>
       <Footer></Footer>
     </>
   )
