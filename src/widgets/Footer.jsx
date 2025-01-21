@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import styles from '../assets/styles/estilos_footer.module.css'
 import imageHelper from '../utils/imageHelper'
 
 import { Icono_Instagram, Icono_Tiktok, Icono_Facebook, Icono_Whatsapp } from '../assets/images/iconos/svg/Redes_Sociales';
 
-const Titulo_Lista = ({ Icono, titulo, elementos_lista = false }) => {
+const Titulo_Lista = ({ Icono = false, titulo, elementos_lista = false, linkRouter = false }) => {
     const [isHovered, setIsHovered] = useState(false);
     
     return (
         <div className={styles.cont_listados}>
             <div className={isHovered ? styles.hovered : ''}>
-                <Icono/>
+                {Icono ? (<Icono/>) : null}
                 <h3>{titulo}</h3>
             </div>
 
@@ -21,7 +22,10 @@ const Titulo_Lista = ({ Icono, titulo, elementos_lista = false }) => {
                     <li key={index} 
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
-                        <a href={item.enlace}>{item.elemento}</a>
+                        {linkRouter ? 
+                        (<Link to={item.enlace}>{item.elemento}</Link>) : 
+                        (<a href={item.enlace}>{item.elemento}</a>)}
+                        
                     </li> 
                 ))}
             </ul>) : (null)
@@ -41,7 +45,13 @@ const Titulo_Icono = ({ Icono, titulo, enlace }) => {
     );
 }
 
-const Footer = () => {
+const Footer = ({data}) => {
+
+    const dataModificada = data.map(objeto => ({
+        elemento: objeto.nombre, // Mapear "nombre" a "elemento"
+        enlace: objeto.enlace,   // Conservar la propiedad "enlace"
+    }));
+
     return (
         <footer>
             <div className={styles.cont_logo_blanco}>
@@ -67,16 +77,13 @@ const Footer = () => {
 
             <div className={styles.cont_secciones_importantes}>
                 <Titulo_Lista 
-                Icono = {Icono_Instagram}
                 titulo = "Secciones Importantes"
                 elementos_lista={[
-                    {elemento: "Nosotros", enlace: "#"},
-                    {elemento: "Productos", enlace: "#"},
-                    {elemento: "Servicios", enlace: "#"},
-                    {elemento: "Catálogos", enlace: "#"},
-                    {elemento: "Contacto", enlace: "#"},
+                    ...dataModificada,
                     {elemento: "Administración", enlace: "#"},
-                ]}/>
+                ]}
+                linkRouter
+                />
             </div>
 
             <div className={styles.cont_canales_comunicacion}>

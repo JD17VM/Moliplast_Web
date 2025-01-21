@@ -5,35 +5,13 @@ import imageHelper from '../utils/imageHelper'
 
 import React, { useState, useEffect } from 'react';
 
-const info = {
-    data: [
-        { 
-        nombre: "Nosotros", 
-        subsecciones: [
-            { nombre: "Nosotros 1", enlace: "/nosotros-1" },
-            { nombre: "Nosotros 2", enlace: "/nosotros-2" },
-            { nombre: "Nosotros 3", enlace: "/nosotros-2" },
-            { nombre: "Nosotros 4", enlace: "/nosotros-2" },
-        ]
-        },
-        { 
-        nombre: "Productos", 
-        enlace: "/productos" 
-        },
-        { 
-        nombre: "Servicios", 
-        subsecciones: [
-            { nombre: "Servicio 1", enlace: "/servicio-1" },
-            { nombre: "Servicio 2", enlace: "/servicio-2" },
-        ]
-    },
-    ]
-}
-
-const respuesta = info.data
+//import dataPaginas from '../data/data_paginas'
 
 
-const Navegador = () => {
+//const data = dataPaginas.data
+
+
+const Navegador = ({data}) => {
 
     const [subseccion_abierta, setSubseccionAbierta] = useState(null);
     const toggleSubseccion = (index) => {
@@ -47,9 +25,9 @@ const Navegador = () => {
         <>
             <div className={styles.cont_navegador}>
                 <header>
-                    <div className={styles.cont_logo}>
+                    <Link to='/' className={styles.cont_logo}>
                         <img src={imageHelper.logo_moliplast} alt="logo moliplast" />
-                    </div>
+                    </Link>
                     <div className={styles.cont_contacto}>
                         <div>
                             <span className="material-symbols-outlined">call</span>
@@ -82,26 +60,27 @@ const Navegador = () => {
                 </header>
                 <nav>
                     <ul className={`${styles.cont_lista_enlaces}`}>
-                        {respuesta.map((seccion, index) => (
+                        {data.map((seccion, index) => (
                             <li key={index}>
-                                {seccion.enlace ? (
-                                    <a>{seccion.nombre}</a>
+                                {!seccion.subsecciones ? (
+                                    <Link to={seccion.enlace} >{seccion.nombre}</Link>
                                 ) : (
                                     <>
-                                    <a 
+                                    <Link 
+                                        to={seccion.enlace}
                                         className={subseccion_abierta === index ? styles.flecha_despliegue_abierto : styles.flecha_despliegue_cerrado} 
                                         onMouseEnter={() => toggleSubseccion(index)}
                                         onMouseLeave={() => toggleSubseccion(index)}
                                     >
                                         {seccion.nombre} 
-                                    </a>
+                                    </Link>
                                     <ul 
                                         className={`${subseccion_abierta === index ? styles.mostrar : styles.ocultar}`}
                                         onMouseEnter={() => toggleSubseccion(index)}
                                         onMouseLeave={() => toggleSubseccion(index)}
                                     >
                                         {seccion.subsecciones.map((subseccion,subIndex) => (
-                                            <li key={subIndex}><a>{subseccion.nombre}</a></li>
+                                            <li key={subIndex}><Link to={subseccion.enlace} >{subseccion.nombre}</Link></li>
                                         ))}
                                     </ul>
                                     </>
@@ -112,7 +91,7 @@ const Navegador = () => {
                     </ul>
 
                     <ul className={`${styles.cont_lista_enlaces_movil} ${navegador_movil_activo ? styles.mostrar : styles.ocultar}`}>
-                    {respuesta.map((seccion, index) => (
+                    {data.map((seccion, index) => (
                             <li key={index}>
                                 {seccion.enlace ? (
                                     <a>{seccion.nombre}</a>
