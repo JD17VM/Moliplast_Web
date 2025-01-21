@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
 
 import styles from './assets/styles/estilos_inicio.module.scss'
 import imageHelper from './utils/imageHelper'
 
 import SliderImgs from './widgets/SliderImgs';
 import CartaProducto from './widgets/CartaProducto';
+import CarruselImgs from './widgets/CarruselImgs';
 
 
-import './assets/styles/estilos_contenedor_marcas.scss'
 
 const ContenedorSeccion = (props) => {
     let claseFondo = ""
@@ -86,32 +85,9 @@ const Marcas = () => {
         },
     ]
 
-    let lista_triplicada_para_slider = []
-    for (let i = 1; i <= 3; i++) {
-        lista_triplicada_para_slider = lista_triplicada_para_slider.concat(data);
-    }
-
-    const [totalSlides, setTotalSlides] = useState(0); 
-
-    useEffect(() => {
-        setTotalSlides(data.length);
-      }, [data]);
-
-
     return (
         <ContenedorSeccion titulo="Marcas" color_fondo="blanco">
-            <div className="contenedor_marcas" style={{ '--cantidad_de_imagenes_de_marca': totalSlides }}>
-                <div className="contenedor_slider">
-                    <div className="slider-track" id="sliderTrack">
-                        {lista_triplicada_para_slider.map((imagen,index) => (
-                            <div key={index} className="slide"><img
-                            src={imagen.enlace}
-                            alt=""/></div>
-                        ))}
-                    </div>
-  
-                </div>
-            </div>
+            <CarruselImgs data={data}/>
         </ContenedorSeccion>
     )
 }
@@ -128,7 +104,7 @@ const Inicio = () => {
         <>
             <SliderImgs images={items}/>
             <LineaDeProductos/>
-            {/*<ProductosDestacados/>*/}
+            <ProductosDestacados/>
             <Marcas/>
         </>
     )
