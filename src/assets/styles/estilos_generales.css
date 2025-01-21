@@ -44,6 +44,11 @@ html{
     box-sizing: border-box;
 }
 
+h2{
+    font-size: var(--fuente_tamanio_titulo_2);
+    font-weight: var(--fuente_semibold);
+}
+
 
 @media only screen and (max-width: 1000px){
     :root{
