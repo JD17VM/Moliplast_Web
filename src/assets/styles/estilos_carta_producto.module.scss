@@ -1,0 +1,34 @@
+.carta_producto{
+    background-color: red;
+    height: 300px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+
+    & > .cont_imagen_producto{
+        width: 100%;
+        aspect-ratio: 1/1;
+        background-color: black;
+
+        & > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    & > .cont_nombre_producto{
+        flex-grow: 1;
+        background-color: var(--color_blanco);
+        padding: 8px 15px;
+        font-size: var(--fuente_tamanio_titulo_4);
+        display: flex;
+
+        & > p{
+            text-align: center;
+            line-height: 1.2;
+            color: var(--color_negro);
+        }
+    }
+}
