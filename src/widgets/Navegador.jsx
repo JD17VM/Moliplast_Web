@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes , useLocation} from 'react-router-dom';
 import styles from '../assets/styles/estilos_navegador.module.scss'
 import { Icono_Instagram, Icono_Tiktok, Icono_Facebook, Icono_Whatsapp } from '../assets/images/iconos/svg/Redes_Sociales';
 import imageHelper from '../utils/imageHelper'
@@ -18,8 +18,14 @@ const Navegador = ({data}) => {
         setSubseccionAbierta(prevIndex => (prevIndex === index ? null : index));
     };
 
-    const [navegador_movil_activo, setNavegadorMovilActivo] = useState(false);
+    
 
+    const [navegador_movil_activo, setNavegadorMovilActivo] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        setNavegadorMovilActivo(false)
+    },[location]);
 
     return (
         <>
@@ -59,6 +65,7 @@ const Navegador = ({data}) => {
                     </button>
                 </header>
                 <nav>
+                    {/* Este es el ul de una pantalla de monitor */}
                     <ul className={`${styles.cont_lista_enlaces}`}>
                         {data.map((seccion, index) => (
                             <li key={index}>
@@ -68,7 +75,6 @@ const Navegador = ({data}) => {
                                     <>
                                     <Link 
                                         to={seccion.enlace}
-                                        className={subseccion_abierta === index ? styles.flecha_despliegue_abierto : styles.flecha_despliegue_cerrado} 
                                         onMouseEnter={() => toggleSubseccion(index)}
                                         onMouseLeave={() => toggleSubseccion(index)}
                                     >
@@ -90,24 +96,29 @@ const Navegador = ({data}) => {
                         ))}
                     </ul>
 
+                    {/* Este es el ul responsivo */}
                     <ul className={`${styles.cont_lista_enlaces_movil} ${navegador_movil_activo ? styles.mostrar : styles.ocultar}`}>
                     {data.map((seccion, index) => (
                             <li key={index}>
-                                {seccion.enlace ? (
-                                    <a>{seccion.nombre}</a>
+                                {!seccion.subsecciones ? (
+                                   <Link to={seccion.enlace} >{seccion.nombre}</Link>
                                 ) : (
                                     <>
-                                    <a 
-                                        className={subseccion_abierta === index ? styles.flecha_despliegue_abierto : styles.flecha_despliegue_cerrado} 
-                                        onClick={() => toggleSubseccion(index)}
-                                    >
-                                        {seccion.nombre} 
-                                    </a>
+                                    <div>
+                                        <Link 
+                                            to={seccion.enlace}
+                                            className={subseccion_abierta === index ? styles.flecha_despliegue_abierto : styles.flecha_despliegue_cerrado} 
+                                        >
+                                            {seccion.nombre} 
+                                        </Link>
+                                        <button onClick={() => toggleSubseccion(index)}>{subseccion_abierta === index ? "▲" : "▼"}</button>
+                                    </div>
+                                    
                                     <ul 
                                         className={`${subseccion_abierta === index ? styles.mostrar : styles.ocultar}`}
                                     >
                                         {seccion.subsecciones.map((subseccion,subIndex) => (
-                                            <li key={subIndex}><a>{subseccion.nombre}</a></li>
+                                            <li key={subIndex}><Link to={subseccion.enlace}>{subseccion.nombre}</Link></li>
                                         ))}
                                     </ul>
                                     </>

@@ -122,7 +122,7 @@
 
                 $padding_vertical: 8px;
 
-                >a{
+                a{
                     //background-color: green;
                     //height: 100%;
                     width: 100%;
@@ -267,7 +267,7 @@
         }
     }
 
-    nav{ 
+    >nav{ 
         justify-content: end;
         
         >ul.cont_lista_enlaces{
@@ -285,37 +285,48 @@
             right:0;
             display: none ;
 
-            &.mostrar{
-                display: block;
-            }
-
-            &.ocultar{
-                display: none; 
-            }
-
-
             >li{
                 /*background-color: yellow;*/
                 display: flex;
                 flex-direction: column;
                 width: 100%;
                 
-
-                >a{
-                    padding: 8px 0.4rem;
-
+                >div{
                     display: flex;
                     justify-content: space-between;
-                    padding-right: 0.7rem;
+                    width: 100%;
 
-                    &.flecha_despliegue_cerrado::after{
-                        content: "▼";
+
+                    >a{
+                        
+    
+                        display: flex;
+                        justify-content: space-between;
+
+                        /*
+                        &.flecha_despliegue_cerrado::after{
+                            content: "▼";
+                            color:var(--color_blanco);
+                        }
+    
+                        &.flecha_despliegue_abierto::after{
+                            content: "▲";
+                            color:var(--color_blanco);
+                        }
+    
+                        .flecha_despliegue_cerrado:hover::after, &.flecha_despliegue_abierto:hover::after{
+                            color:var(--color_negro);
+                        }
+                        */
                     }
 
-                    &.flecha_despliegue_abierto::after{
-                        content: "▲";
+                    >button{
+                        //background-color: red;
+                        padding: 0 1rem;
+                        border-left: 1px solid rgba(255, 255, 255, 0.486);
                     }
                 }
+                
 
                 >ul{
                     position: static;
