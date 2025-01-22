@@ -65,7 +65,7 @@ const ProductosDestacados = () => {
     )
 }
 
-const Marcas = () => {
+export const Marcas = () => {
 
     const data = [
         {
@@ -92,7 +92,7 @@ const Marcas = () => {
     )
 }
 
-const Inicio = () => {
+export const Inicio = () => {
 
     const items = [
         { name: 'Item 1', enlace_imagen: imageHelper.ImagenDemo1 },
