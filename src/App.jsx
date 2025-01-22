@@ -19,7 +19,7 @@ const data = dataPaginas.data
 function App() {
 
   return (
-    <BrowserRouter basename="/<Moliplast_Web>">
+    <BrowserRouter basename="/Moliplast_Web">
       <Navegador data={data}/>
 
       <Routes>
